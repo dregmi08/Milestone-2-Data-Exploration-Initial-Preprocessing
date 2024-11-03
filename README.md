@@ -14,6 +14,11 @@ Words that appear frequently in a specific review get higher weights, while word
 + **Word2Vec** converts reviews into vector representations in a way that captures semantic relationships between similar words and phrases (reviews closer to one another will also
   be closer together in the vector space). This technique allows the model to understand relationships and context.
 
+Before doing any of this, however, we will be removing stop words from our review. Stop words are words that don't carry any semantic meaning, such as (a, an, and, I), etc. This 
+will be done in order to clean up our review data. We will, however, keep certain stop words (such as not, no, very, and but) because they can be used in our case to intensify
+("very good" as opposed to "good"), indiciate mixed feelings ("I liked this feature but not this one"), or invert sentiment ("no good" inverts "good"). We will also be dropping
+the Reply column because over 99.6% of the data in that feature is null, as well as dropping the column "Time submitted" because the time a user submits a review is irrelevant to our model.
+
 ## General Strategy for Picking which Preprocessing Strategy.
 Our plan is to encode our reviews using all three techniques, and later down the line, we are going to test our model to see which 
 technique performs the best. We are going to split our data, use the same split to train three models, calculate accuracy and F1 scores, as well as using k-fold cross validation to see 
