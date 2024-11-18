@@ -1,5 +1,21 @@
 # Milestone-3-Pre-Processing
-Here is a repository containing containing all steps of our preprocessing and the results of our first models. We have created two types of models - one that is a classifier for the category of the review based on number of stars (1-2 stars = negative, 3 stars = neutral, and 4-5 stars = positive) using the text of the reviews to predict the class. Our second model tries to extract and rank topics of the Spotify app that users find important (either good or bad). The model found the top 10 positive topics and top 10 negative topics (based on sentiment scores) and the negative topics were given manually assigned labels.
+
+## Preprocessing Updates
++ We decided against encoding our review data in three different ways, as the method we chose created a pretty accurate model
++ We decided to remove the feature we added in milestone 2, which was the word count of each review, as we don't think it would give us much information for either of the two models we decided to make
+
+## Part 1: Supervised Learning Model Creation/Evaluation
+The first model is pretty straightforward, we basically classified the reviews based on sentiment into good, positive, and neutral, and we verified our results by checking if a review that was classified as positive had 4-5 stars, checking if a review classified as neutral had 3 stars, and seeing if a review classified as negative had a 1-2 star rating.
+
+## Part 2: Unsupervised Ranking Model Creation/Evaluation
+Our second part (the ranking step) falls more into the category of unsupervised learning. What we decided to do was use Latent Dirichlet Allocation (LDA), which is a technique used for 
+topic modeling to extract different topics amongst the reviews. Each topic has a corresponding sentiment score, and we got the top 10 positive topics (topics with the highest sentiment 
+scores), and top 10 negative topics (topics with the lowest sentiment scores), and assigned descriptive labels to the negative topics (because we are concerned with ranking issues that 
+users complain about). The topic with the lowest sentiment score was assigned the highest ranking, and the topic with the highest sentiment score among all negative topics was assigned the lowest ranking. We then used sentence transformers to get a sort of "ground truth". Sentence transformers looks through all negative reviews and assigns one of our labels to each one. We 
+then counted the frequencies of the ground truth, compared it to our predicted rankings using kendall's tau, which evaluates rankings based on how similar they are. Although the accuracy 
+for this particular model was slightly above random, as anything above 0 indicates a positive correlation, we plan on strengthening this in our next few models, as we will manually go 
+through the dataset and manually assign labels as well as creating more labels, instead of relying on existing libraries. This is only the first model for part 2, and since it is 
+unsupervised learning, it was a bit more difficult to find metrics for testing and creating labels for data.
 
 ## Data Preprocessing for Classification (Sentiment Analysis) Model
 
