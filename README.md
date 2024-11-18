@@ -33,7 +33,7 @@ The model type we used was a Logistic Regression model, where the feature we wan
 We used a 80/20 split for our train vs. test data.
 
 ### Training Error
-WE NEED TO ADD THIS TO THE NOTEBOOK
+The accuracy for the testing data was 0.81. The precision for negative reviews was 0.75, and 0.86 for positive. The recall was 0.80 for negative, and 0.82 for positive. The f1-score was 0.78 for negative reviews, and 0.84 for positive.
 
 ### Testing Error
 The accuracy for the testing data was 0.77. The precision for negative reviews was 0.72, 0.30 for neutral, and 0.82 for postive. The recall was 0.87 for negative, 0.01 for neutral, and 0.86 for positive. The f1-score was 0.79 for negative reviews, 0.03 for neutral, and 0.84 for positive.
@@ -42,26 +42,15 @@ The accuracy for the testing data was 0.77. The precision for negative reviews w
 Based on the fitting curve that was created, the training accuracy decreased as the training dataset size increased from ~5,000 to ~50,000, while the test accuracy increased as the size increased, but slowed down after ~40,000 size of training set.
 
 ### Potential Next Models
-FILL THIS OUT
+We hope to improve the accuracy of this model as getting an accurate sentiment (positive/negative/neutral) directly impacts our ability to create the ranked list of features. For future steps, we will look into using pre-trained sentiment analyzers, like ones provided by Hugging Face and test their accuracy.
 
 ## Conclusion for Classification Model
-Based on the different scores for the testing data, the model is best at classifying positive reviews, then negative, and the worst at classifying neutral reviews. It is in fact very bad at classifying neutral reviews. It's possible this is because choosing 3 stars as 'neutral' might be a bit arbitrary, and it's possible people giving three stars might have both positive and negative things to say about the app, making them hard to classify.
-
-WHAT CAN BE DONE TO IMPROVE THIS MODEL
+Based on the different scores for the testing data, the model is best at classifying positive reviews, then negative, and the worst at classifying neutral reviews. It is in fact very bad at classifying neutral reviews. It's possible this is because choosing 3 stars as 'neutral' might be a bit arbitrary, and it's possible people giving three stars might have both positive and negative things to say about the app, making them hard to classify. For future improvement, we will try other models besides Logistic Regression as well as pretrained sentiment analyzers.
 
 
-## Data Preprocessing for Topic Ranking Model (Extracting important features for users of Spotify from reviews)
-FILL OUT
+## Topic Ranking Model (Extracting important features for users of Spotify from reviews)
+The topic ranking model is an unsupervised learning model, and thus we do not have a training error currently. We evaluated the accuracy by manually creating labels for topics identified by LDA, and then using the allMini model from Hugging Face to classify reviews into one of the predefined topics. We then used the Kendall's Tau metric to get an idea of the correlation between the LDA model's ranking and allMini's ranking. This number was very low (0.02), but since it is above 0 it signifies that it is better than random. This was a very rough method for determining accuracy, but given this project it is the best we have for this milestone. Going forward, we plan to manually label reviews from all sentiments and ratings to get a comprehensive validation set that we can use to test our model, and we believe this will give us an idea of how to move forward. To improve our ranking, we will also try other methods. After labeling some data, we can transform this into a supervised machine learning problem, and we believe that fine-tuning an SVM and decision tree may help us get better results.
 
-### Data Preprocessing for Topic Ranking Model
-
-### Training/Testing of Topic Ranking Model
-
-### Fitting Curve
-
-### Potential Next Models
-
-## Conclusion for Feature Extraction Model
 
 
 # Milestone-2-Data-Exploration-Initial-Preprocessing
