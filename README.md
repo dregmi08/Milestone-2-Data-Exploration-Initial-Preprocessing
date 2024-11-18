@@ -1,10 +1,11 @@
+
+# NOTE: The Milestone3 notebook has the first model, the second model ranking is more accurate/accurately tested in the LDA notebook.
 # Milestone-3-Pre-Processing
 
 ## Preprocessing Updates
 + We decided against encoding our review data in three different ways, as the method we chose created a pretty accurate model
 + We decided to remove the feature we added in milestone 2, which was the word count of each review, as we don't think it would give us much information for either of the two models we decided to make
 
-# NOTE: The Milestone3 notebook has the first model, the second model ranking is more accurate/accurately tested in the LDA notebook.
 ## Part 1: Supervised Learning Model Creation/Evaluation
 The first model is pretty straightforward, we basically classified the reviews based on sentiment into good, positive, and neutral, and we verified our results by checking if a review that was classified as positive had 4-5 stars, checking if a review classified as neutral had 3 stars, and seeing if a review classified as negative had a 1-2 star rating.
 
