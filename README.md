@@ -1,5 +1,5 @@
 
-# NOTE: The Milestone3 notebook has the first model, the second model ranking is more accurate/accurately tested in the LDA notebook.
+# NOTE: The Milestone3 notebook has the first model, the second model ranking is more accurate/accurately tested in the LDA notebook because the topic modeling contains more words in the LDA notebook.
 # Milestone-3-Pre-Processing
 
 ## Preprocessing Updates
