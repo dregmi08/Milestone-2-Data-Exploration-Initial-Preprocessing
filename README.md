@@ -27,7 +27,8 @@ The review text was tokenized using word_tokenize from nltk and then those token
 
 ## Training/Testing of Classification Model
 
-The model type we used was a Logistic Regression model, where the feature we wanted to predict was the rating category (negative, neutral, or positive) and the feature used to predict it was the vectors created from the reviews using Word2Vec.
+We encoded our ratings using word2vec, and we wanted to predict the sentiment (negative, neutral, or positive) and the feature used to predict it was the vectors created from the reviews 
+using Word2Vec.
 
 ### Data Split
 We used a 80/20 split for our train vs. test data.
