@@ -1,5 +1,5 @@
 # Milestone-3-Pre-Processing
-Here is a repository containing containing all steps of our preprocessing and the results of our first models. We have created two types of models - one that is a classifier for the category of the review based on number of stars (1-2 stars = negative, 3 stars = neutral, and 4-5 stars = positive) using the text of the reviews to predict the class. Our second model tries to extract features of the Spotify app that users find important (either good or bad).
+Here is a repository containing containing all steps of our preprocessing and the results of our first models. We have created two types of models - one that is a classifier for the category of the review based on number of stars (1-2 stars = negative, 3 stars = neutral, and 4-5 stars = positive) using the text of the reviews to predict the class. Our second model tries to extract and rank topics of the Spotify app that users find important (either good or bad). The model found the top 10 positive topics and top 10 negative topics (based on sentiment scores) and the negative topics were given manually assigned labels.
 
 ## Data Preprocessing for Classification (Sentiment Analysis) Model
 
@@ -34,12 +34,12 @@ Based on the different scores for the testing data, the model is best at classif
 WHAT CAN BE DONE TO IMPROVE THIS MODEL
 
 
-## Data Preprocessing for Feature Extraction Model (Extracting important features for users of Spotify from reviews)
+## Data Preprocessing for Topic Ranking Model (Extracting important features for users of Spotify from reviews)
 FILL OUT
 
-### Data Preprocessing for Feature Extraction Model
+### Data Preprocessing for Topic Ranking Model
 
-### Training/Testing of Feature Extraction Model
+### Training/Testing of Topic Ranking Model
 
 ### Fitting Curve
 
