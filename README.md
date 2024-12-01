@@ -1,5 +1,13 @@
+# Milestone 4: Second Models
 
-# NOTE: The Milestone3 notebook has the first model, the second model ranking is more accurate/accurately tested in the LDA notebook because the topic modeling contains more words in the LDA notebook.
+## Preprocessing Updates 
+
+### Conclusion section
+#### What is the conclusion of your 2nd model? 
+
+
+#### What can be done to possibly improve it?
+   
 # Milestone-3-Pre-Processing
 
 ## Preprocessing Updates
