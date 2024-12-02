@@ -26,6 +26,9 @@ complaints in order of decreasing frequency, with the label/complaint with the m
 Kendall's tau score (metric for comparing rankings) we got last time to this time, we believe that doing our own manual labeling, as well as using a clustering tool that accounts for 
 multi-cluster membership, we were able to get a more accurate result.
 
+#### Fitting Graph
+Based of our fitting graph, our model fits reasonably well. It gradually increases in validation accuracy up until around ~16000, then stays relatively similar with a larger training size. The training accuracy gradually decreases as we increase its size until around ~25000 where it remains relatively the same. The validation accuracy not improving past ~16000 may indicate we need to have a more robust model to get more nuances from the data.
+
 #### What can be done to possibly improve it?
 
 For our unsupervised model, we are thinking of doing more hyperparameter tuning with the number PCA components as well as the fuzziness factor. We are also thinking of perhaps labeling 
