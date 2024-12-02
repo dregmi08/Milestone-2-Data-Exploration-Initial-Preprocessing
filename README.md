@@ -4,9 +4,20 @@
 
 ### Conclusion section
 #### What is the conclusion of your 2nd model? 
-
+For our unsupervised model, we were able to improve our ranking system. In the previous milestone, we were able to only achieve a Kendall's Tau score of around 0.02, but we were able to 
+get that all the way up to 0.2 this time before our hyperparameter tuning. While there is plenty of room for improvement, we believe that what contributed to this improved model was 
+our manual labeling, as well as using fuzzy k means clustering (which basically allows for reviews to be members of multiple clusters, we felt this was appropriate because reviews 
+oftentimes can be classified with different labels, so it makes sense for a review to belong to more than one cluster). Last time, we has used LDA to extract the top 10 positive/negative 
+topics, came up with labels for the top 10 most frequent negative topics, and used a seperate tool to assign labels to get a ground truth ranking. This time, we decided to manually label
+a small subset of our dataset (around 600), come up with labels for all of these, group similar labels/reviews together, and rank these labels/user complaints in order of decreasing 
+frequency, with the label/complaint with the most user reviews being the most important/highly ranked issue. After clustering, and comparing the Kendall's tau score (metric for comparing 
+rankings) we got last time to this time, we believe that doing our own manual labeling, as well as using a clustering tool that accounts for multi-cluster membership, we were able to get 
+a more accurate result.
 
 #### What can be done to possibly improve it?
+
+For our unsupervised model, we are thinking of doing more hyperparameter tuning with the number PCA components as well as the fuzziness factor. We are also thinking of perhaps labeling 
+even more data points to get a more accurate ground truth, as well as making sure    
    
 # Milestone-3-Pre-Processing
 
