@@ -1,9 +1,12 @@
 # Milestone 4: Second Models
 
-## Preprocessing Updates 
+# NOTE: The notebooks for this Milestone should be Milestone4Classification.ipynb (for the first model, the false negatives/false positives, and fitting graph) and Milestone4.ipynb
+# for the second model
 
 ### Conclusion section
 #### What is the conclusion of your 2nd model? 
+
+
 For our unsupervised model, we were able to improve our ranking system. In the previous milestone, we were able to only achieve a Kendall's Tau score of around 0.02, but we were able to 
 get that all the way up to 0.2 this time before our hyperparameter tuning. While there is plenty of room for improvement, we believe that what contributed to this improved model was 
 our manual labeling, as well as using fuzzy k means clustering (which basically allows for reviews to be members of multiple clusters, we felt this was appropriate because reviews 
