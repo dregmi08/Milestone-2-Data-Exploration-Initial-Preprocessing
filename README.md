@@ -2,19 +2,29 @@
 
 # NOTE: The notebooks for this Milestone should be Milestone4Classification.ipynb (for the first model, the false negatives/false positives, and fitting graph) and Milestone4.ipynb for the second model
 
-### Conclusion section
-#### What is the conclusion of your 2nd model? 
+## Conclusion section
+### What is the conclusion of your 2nd model? 
 
+For our supervised model (the sentiment classification), we used a Naive Bayes Classifier to classify the sentiments (Positive, Negative, and Neutral), whereas for Milestone 3, we used a 
+Logistic Regression model to just classify between Positive and Negative. When including 'Neutral' as one of our categories this time around, we noticed that our overall accuracy for 
+training/test was around the same (Milestone 3 test and train: 0.81, Milestone 4 test and train: 0.77 and 0.80). The reason why the figures are slightly lower is because the naive bayes 
+classifier is not particularly great at classifying reviews with a 3 star rating (supposedly neutral), and we know this from the very low precision, recall, and f1 scores in the 
+classification report (precision ~ test: 0.22, train: 0.67, recall ~ train: 0.05, test: 0.15, f1 ~ test: 0.08, train: 0.2). However, when looking into this, we realized that a potential 
+reason for this could be that when we randomly sampled some 3-star reviews, some of them did carry slightly negative sentiments/tones. When changing the mapping to: negative <= 3, 
+positive 4 and 5, our accuracy did jump up to around 0.85, which would make this the best model that we have come up with so far. However, we still want to look into more samples that are 
+3 stars just to ensure that including 3-star ratings in our set of negative sentiment ratings is the correct decision, we are looking into this as a potential way of improving our final 
+model. Overall, since this new information on the 3-star ratings does improve our accuracy by a pretty good amount (and even if we don't, we still have a comparable model even with the 
+introduction of a new sentiment category), we are pretty happy with the Naive Bayes classifier.
 
-For our unsupervised model, we were able to improve our ranking system. In the previous milestone, we were able to only achieve a Kendall's Tau score of around 0.02, but we were able to 
-get that all the way up to 0.2 this time before our hyperparameter tuning. While there is plenty of room for improvement, we believe that what contributed to this improved model was 
-our manual labeling, as well as using fuzzy k means clustering (which basically allows for reviews to be members of multiple clusters, we felt this was appropriate because reviews 
-oftentimes can be classified with different labels, so it makes sense for a review to belong to more than one cluster). Last time, we has used LDA to extract the top 10 positive/negative 
-topics, came up with labels for the top 10 most frequent negative topics, and used a seperate tool to assign labels to get a ground truth ranking. This time, we decided to manually label
-a small subset of our dataset (around 600), come up with labels for all of these, group similar labels/reviews together, and rank these labels/user complaints in order of decreasing 
-frequency, with the label/complaint with the most user reviews being the most important/highly ranked issue. After clustering, and comparing the Kendall's tau score (metric for comparing 
-rankings) we got last time to this time, we believe that doing our own manual labeling, as well as using a clustering tool that accounts for multi-cluster membership, we were able to get 
-a more accurate result.
+For our unsupervised model, we were able to improve our ranking system. In the previous milestone, we were able to only achieve a Kendall's Tau score (metric for comparing two rankings) 
+of around 0.02, but we were able to get that all the way up to 0.2 this time before our hyperparameter tuning. While there is plenty of room for improvement, we believe that what 
+contributed to this improved model was our manual labeling, as well as using fuzzy k means clustering (which basically allows for reviews to be members of multiple clusters, we felt this 
+was appropriate because reviews oftentimes can be classified with different labels, so it makes sense for a review to belong to more than one cluster). Last time, we has used LDA to 
+extract the top 10 positive/negative topics, came up with labels for the top 10 most frequent negative topics, and used a seperate tool to assign labels to get a ground truth ranking. 
+This time, we decided to manually label a small subset of our dataset (around 600), come up with labels for all of these, group similar labels/reviews together, and rank these labels/user 
+complaints in order of decreasing frequency, with the label/complaint with the most user reviews being the most important/highly ranked issue. After clustering, and comparing the 
+Kendall's tau score (metric for comparing rankings) we got last time to this time, we believe that doing our own manual labeling, as well as using a clustering tool that accounts for 
+multi-cluster membership, we were able to get a more accurate result.
 
 #### What can be done to possibly improve it?
 
