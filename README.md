@@ -28,8 +28,14 @@ multi-cluster membership, we were able to get a more accurate result.
 
 #### What can be done to possibly improve it?
 
-For our unsupervised model, we are thinking of doing more hyperparameter tuning with the number PCA components as well as the fuzziness factor. We are also thinking of perhaps labeling 
-even more data points to get a more accurate ground truth, as well as making sure    
+For our classification model, we are thinking of looking into SVMs. If we just decide to go with two classes, Positive and Negative, then we might look into using a support vector machine 
+for the sentiment classification. We are also open to looking into Random Forest or Gradient Boosting Machines. If we decide to just keep the naive bayes classifier, then we will also 
+look into class weighting for the 3-star reviews or just going with Positive/Negative categories as well as some additional hyperparameter tuning.
+
+For our unsupervised model, we are thinking of doing more hyperparameter tuning with the number PCA components as well as the fuzziness factor (we used fuzzy k means clustering, fuzziness 
+controls how much a data point can belong to multiple clusters). We are also thinking of perhaps labeling even more data points to get a more accurate ground truth, as perhaps 
+experimenting with other clustering algorithms, such as DBSCAN (Density-Based Spatial Clustering of Applications with Noise) or Agglomerative Hierarchical Clustering to see if they can 
+provide more accurate clustering.
    
 # Milestone-3-Pre-Processing
 
