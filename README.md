@@ -14,7 +14,7 @@ reason for this could be that when we randomly sampled some 3-star reviews, some
 positive 4 and 5, our accuracy did jump up to around 0.85, which would make this the best model that we have come up with so far. However, we still want to look into more samples that are 
 3 stars just to ensure that including 3-star ratings in our set of negative sentiment ratings is the correct decision, we are looking into this as a potential way of improving our final 
 model. Overall, since this new information on the 3-star ratings does improve our accuracy by a pretty good amount (and even if we don't, we still have a comparable model even with the 
-introduction of a new sentiment category), we are pretty happy with the Naive Bayes classifier.
+introduction of a new sentiment category), we are pretty happy with the Naive Bayes classifier. 
 
 For our unsupervised model, we were able to improve our ranking system. In the previous milestone, we were able to only achieve a Kendall's Tau score (metric for comparing two rankings) 
 of around 0.02, but we were able to get that all the way up to 0.2 this time before our hyperparameter tuning. While there is plenty of room for improvement, we believe that what 
@@ -24,21 +24,27 @@ extract the top 10 positive/negative topics, came up with labels for the top 10 
 This time, we decided to manually label a small subset of our dataset (around 600), come up with labels for all of these, group similar labels/reviews together, and rank these labels/user 
 complaints in order of decreasing frequency, with the label/complaint with the most user reviews being the most important/highly ranked issue. After clustering, and comparing the 
 Kendall's tau score (metric for comparing rankings) we got last time to this time, we believe that doing our own manual labeling, as well as using a clustering tool that accounts for 
-multi-cluster membership, we were able to get a more accurate result.
+multi-cluster membership, we were able to get a more accurate result. After hyperparameter tuning, we were actually able to get a Kendall's Tau of 0.466, a new personal bext, after 
+increasing the number of clusters, which is much higher than anything we saw in Milestone 3.
 
 #### Fitting Graph
 Based of our fitting graph, our model fits reasonably well. It gradually increases in validation accuracy up until around ~16000, then stays relatively similar with a larger training size. The training accuracy gradually decreases as we increase its size until around ~25000 where it remains relatively the same. The validation accuracy not improving past ~16000 may indicate we need to have a more robust model to get more nuances from the data.
 
 #### What can be done to possibly improve it?
 
-For our classification model, we are thinking of looking into SVMs. If we just decide to go with two classes, Positive and Negative, then we might look into using a support vector machine 
-for the sentiment classification. We are also open to looking into Random Forest or Gradient Boosting Machines. If we decide to just keep the naive bayes classifier, then we will also 
-look into class weighting for the 3-star reviews or just going with Positive/Negative categories as well as some additional hyperparameter tuning.
+For the classification model, potential improvements include conducting additional hyperparameter tuning for our Naive Bayes Classifier to optimize performance. Incorporating class weighting for imbalanced classes (the 3 star reviews) or simplifying the classification categories (into just positive/negative) may yield better results.
 
-For our unsupervised model, we are thinking of doing more hyperparameter tuning with the number PCA components as well as the fuzziness factor (we used fuzzy k means clustering, fuzziness 
-controls how much a data point can belong to multiple clusters). We are also thinking of perhaps labeling even more data points to get a more accurate ground truth, as perhaps 
-experimenting with other clustering algorithms, such as DBSCAN (Density-Based Spatial Clustering of Applications with Noise) or Agglomerative Hierarchical Clustering to see if they can 
-provide more accurate clustering.
+For the unsupervised model, we can tune hyperparameters such as the number of PCA components or the fuzziness factor in fuzzy k-means to refine clustering quality. Labeling more data 
+points may also improve the ground truth and help validate clustering results. Furthermore, experimenting with alternative algorithms like DBSCAN or Agglomerative Clustering could provide 
+better cluster accuracy and robustness against noise.
+
+#### What other models are you considering?
+For the classification task, we are considering Support Vector Machines (SVM) for binary sentiment classification with Positive and Negative classes. Random Forest and Gradient Boosting 
+Machines, such as XGBoost or LightGBM, are also potential options due to their ability to handle complex patterns. Additionally, if we continue with the Naive Bayes classifier, we may 
+explore modifications like class weighting for the 3-star reviews or simplifying the model to only Positive/Negative categories.
+
+For the unsupervised task, aside from continuing with fuzzy k-means clustering, we are considering experimenting with DBSCAN, which handles clusters of arbitrary shape and noise, and 
+Agglomerative Hierarchical Clustering, which provides a bottom-up approach to grouping data points.
    
 # Milestone-3-Pre-Processing
 
