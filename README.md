@@ -1,7 +1,6 @@
 # Milestone 4: Second Models
 
-# NOTE: The notebooks for this Milestone should be Milestone4Classification.ipynb (for the first model, the false negatives/false positives, and fitting graph) and Milestone4.ipynb
-# for the second model
+# NOTE: The notebooks for this Milestone should be Milestone4Classification.ipynb (for the first model, the false negatives/false positives, and fitting graph) and Milestone4.ipynb for the second model
 
 ### Conclusion section
 #### What is the conclusion of your 2nd model? 
