@@ -1,141 +1,22 @@
-# Milestone 4: Second Models
+# Milestone 5: Final Report
 
-# NOTE: The notebooks for this Milestone should be Milestone4Classification.ipynb (for the first model, the false negatives/false positives for test and train, and fitting graph) and Milestone4.ipynb for the second model
+## Introduction
+In today's competitive landscape, understanding user feedback is critical for businesses striving to enhance customer satisfaction and drive meaningful product improvements. Our project 
+focuses on classifying user reviews based on their sentiment and identifying the key features most frequently highlighted in negative reviews and ranking them from most important to least 
+important to fix/address. By leveraging sentiment analysis techniques and clustering methods, this project provides a systematic approach to pinpoint areas where users see the greatest 
+need for improvement. Our methodology not only streamlines the review analysis process but also allows for businesses to prioritize enhancements efficiently, replacing the labor-intensive 
+process of manually sifting through thousands of reviews in favor of machine learning algorithms and techniques. 
 
-## Conclusion section
-### What is the conclusion of your 2nd model? 
+## Methods
+### Data Exploration
+To begin exploring the dataset of Spotify app reviews, we first examined its basic structure and features. The dataset consists of 61,594 observations and five features: Rating (the number 
+of stars, from 1 to 5, given by users), Review (the textual content of user comments), Total_thumbsup (the number of thumbs up a review received), Time_submitted (the timestamp of when the 
+review was submitted), and Reply (textual responses from other users or the Spotify team). We analyzed the distribution of thumbs up by star rating, the frequency of different ratings, and 
+the word count of reviews by rating to uncover patterns that might inform preprocessing steps. For example, this analysis helped identify whether longer reviews tended to correlate with 
+lower ratings (1-2 stars). Since one of our models focuses on feature ranking for negative reviews, we paid particular attention to the balance of negative versus positive reviews, the 
+level of engagement (thumbs up) on negative reviews compared to positive ones, and any trends linking word count with sentiment ratings. Additionally, we performed a preliminary keyword 
+analysis by extracting the top 20 words for each rating category (1-5 stars) to identify key themes and patterns across user feedback. These findings provided initial insights into user 
+behavior and engagement, which guided our next steps in preprocessing and modeling.
 
-For our supervised model (the sentiment classification), we used a Naive Bayes Classifier to classify the sentiments (Positive, Negative, and Neutral), whereas for Milestone 3, we used a 
-Logistic Regression model to just classify between Positive and Negative. When including 'Neutral' as one of our categories this time around, we noticed that our overall accuracy for 
-training/test was around the same (Milestone 3 test and train: 0.81, Milestone 4 test and train: 0.77 and 0.80). The reason why the figures are slightly lower is because the naive bayes 
-classifier is not particularly great at classifying reviews with a 3 star rating (supposedly neutral), and we know this from the very low precision, recall, and f1 scores in the 
-classification report (precision ~ test: 0.22, train: 0.67, recall ~ train: 0.05, test: 0.15, f1 ~ test: 0.08, train: 0.2). However, when looking into this, we realized that a potential 
-reason for this could be that when we randomly sampled some 3-star reviews, some of them did carry slightly negative sentiments/tones. When changing the mapping to: negative <= 3, 
-positive 4 and 5, our accuracy did jump up to around 0.85, which would make this the best model that we have come up with so far. However, we still want to look into more samples that are 
-3 stars just to ensure that including 3-star ratings in our set of negative sentiment ratings is the correct decision, we are looking into this as a potential way of improving our final 
-model. Overall, since this new information on the 3-star ratings does improve our accuracy by a pretty good amount (and even if we don't, we still have a comparable model even with the 
-introduction of a new sentiment category), we are pretty happy with the Naive Bayes classifier. 
-
-For our unsupervised model, we were able to improve our ranking system. In the previous milestone, we were able to only achieve a Kendall's Tau score (metric for comparing two rankings) 
-of around 0.02, but we were able to get that all the way up to 0.2 this time before our hyperparameter tuning. While there is plenty of room for improvement, we believe that what 
-contributed to this improved model was our manual labeling, as well as using fuzzy k means clustering (which basically allows for reviews to be members of multiple clusters, we felt this 
-was appropriate because reviews oftentimes can be classified with different labels, so it makes sense for a review to belong to more than one cluster). Last time, we has used LDA to 
-extract the top 10 positive/negative topics, came up with labels for the top 10 most frequent negative topics, and used a seperate tool to assign labels to get a ground truth ranking. 
-This time, we decided to manually label a small subset of our dataset (around 600), come up with labels for all of these, group similar labels/reviews together, and rank these labels/user 
-complaints in order of decreasing frequency, with the label/complaint with the most user reviews being the most important/highly ranked issue. After clustering, and comparing the 
-Kendall's tau score (metric for comparing rankings) we got last time to this time, we believe that doing our own manual labeling, as well as using a clustering tool that accounts for 
-multi-cluster membership, we were able to get a more accurate result. After hyperparameter tuning, we were actually able to get a Kendall's Tau of 0.466, a new personal bext, after 
-increasing the number of clusters, which is much higher than anything we saw in Milestone 3.
-
-#### Fitting Graph
-Based of our fitting graph, our model fits reasonably well. It gradually increases in validation accuracy up until around ~16000, then stays relatively similar with a larger training size. The training accuracy gradually decreases as we increase its size until around ~25000 where it remains relatively the same. The validation accuracy not improving past ~16000 may indicate we need to have a more robust model to get more nuances from the data.
-
-#### What can be done to possibly improve it?
-
-For the classification model, potential improvements include conducting additional hyperparameter tuning for our Naive Bayes Classifier to optimize performance. Incorporating class weighting for imbalanced classes (the 3 star reviews) or simplifying the classification categories (into just positive/negative) may yield better results.
-
-For the unsupervised model, we can tune hyperparameters such as the number of PCA components or the fuzziness factor in fuzzy k-means to refine clustering quality. Labeling more data 
-points may also improve the ground truth and help validate clustering results. Furthermore, experimenting with alternative algorithms like DBSCAN or Agglomerative Clustering could provide 
-better cluster accuracy and robustness against noise.
-
-#### What other models are you considering?
-For the classification task, we are considering Support Vector Machines (SVM) for binary sentiment classification with Positive and Negative classes. Random Forest and Gradient Boosting 
-Machines, such as XGBoost or LightGBM, are also potential options due to their ability to handle complex patterns. Additionally, if we continue with the Naive Bayes classifier, we may 
-explore modifications like class weighting for the 3-star reviews or simplifying the model to only Positive/Negative categories.
-
-For the unsupervised task, aside from continuing with fuzzy k-means clustering, we are considering experimenting with DBSCAN, which handles clusters of arbitrary shape and noise, and 
-Agglomerative Hierarchical Clustering, which provides a bottom-up approach to grouping data points.
-   
-# Milestone-3-Pre-Processing
-
-## Preprocessing Updates
-+ We decided against encoding our review data in three different ways, as the method we chose created a pretty accurate model
-+ We decided to remove the feature we added in milestone 2, which was the word count of each review, as we don't think it would give us much information for either of the two models we decided to make
-
-## Part 1: Supervised Learning Model Creation/Evaluation
-The first model is pretty straightforward, we basically classified the reviews based on sentiment into good, positive, and neutral, and we verified our results by checking if a review that was classified as positive had 4-5 stars, checking if a review classified as neutral had 3 stars, and seeing if a review classified as negative had a 1-2 star rating.
-
-## Part 2: Unsupervised Ranking Model Creation/Evaluation
-Our second part (the ranking step) falls more into the category of unsupervised learning. What we decided to do was use Latent Dirichlet Allocation (LDA), which is a technique used for 
-topic modeling to extract different topics amongst the reviews. Each topic has a corresponding sentiment score, and we got the top 10 positive topics (topics with the highest sentiment 
-scores), and top 10 negative topics (topics with the lowest sentiment scores), and assigned descriptive labels to the negative topics (because we are concerned with ranking issues that 
-users complain about). The topic with the lowest sentiment score was assigned the highest ranking, and the topic with the highest sentiment score among all negative topics was assigned the lowest ranking. We then used sentence transformers to get a sort of "ground truth". Sentence transformers looks through all negative reviews and assigns one of our labels to each one. We 
-then counted the frequencies of the ground truth, compared it to our predicted rankings using kendall's tau, which evaluates rankings based on how similar they are. Although the accuracy 
-for this particular model was slightly above random, as anything above 0 indicates a positive correlation, we plan on strengthening this in our next few models, as we will manually go 
-through the dataset and manually assign labels as well as creating more labels, instead of relying on existing libraries. This is only the first model for part 2, and since it is 
-unsupervised learning, it was a bit more difficult to find metrics for testing and creating labels for data.
-
-## Data Preprocessing for Classification (Sentiment Analysis) Model
-
-### Rating Column
-The ratings for the reviews were categorized into negative (1-2 stars), neutral (3 stars) and positive (4-5 stars).
-
-### Review Column
-The review text was tokenized using word_tokenize from nltk and then those tokens were converted to all lowercase and the punctuation was removed. The stem() function from PorterStemmer from nltk.stem was used to remove morphemes for words and only keep their stems. The stop words were then removed from the tokens. The tokens were concatenated together with spaces in between as a 'cleaned' version of the review. This was done for every review. Then, the reviews were split into lists of words and were fed into a Word2Vec model. Then the average of the word vectors from the review in the model were taken for each review and put into a 'vector' column.
-
-## Training/Testing of Classification Model
-
-We encoded our ratings using word2vec, and we wanted to predict the sentiment (negative, neutral, or positive) and the feature used to predict it was the vectors created from the reviews 
-using Word2Vec.
-
-### Data Split
-We used a 80/20 split for our train vs. test data.
-
-### Training Error
-The accuracy for the testing data was 0.81. The precision for negative reviews was 0.75, and 0.86 for positive. The recall was 0.80 for negative, and 0.82 for positive. The f1-score was 0.78 for negative reviews, and 0.84 for positive.
-
-### Testing Error
-The accuracy for the testing data was 0.77. The precision for negative reviews was 0.72, 0.30 for neutral, and 0.82 for postive. The recall was 0.87 for negative, 0.01 for neutral, and 0.86 for positive. The f1-score was 0.79 for negative reviews, 0.03 for neutral, and 0.84 for positive.
-
-### Fitting Curve
-Based on the fitting curve that was created, the training accuracy decreased as the training dataset size increased from ~5,000 to ~50,000, while the test accuracy increased as the size increased, but slowed down after ~40,000 size of training set.
-
-### Potential Next Models
-We hope to improve the accuracy of this model as getting an accurate sentiment (positive/negative/neutral) directly impacts our ability to create the ranked list of features. For future steps, we will look into using pre-trained sentiment analyzers, like ones provided by Hugging Face and test their accuracy.
-
-## Conclusion for Classification Model
-Based on the different scores for the testing data, the model is best at classifying positive reviews, then negative, and the worst at classifying neutral reviews. It is in fact very bad at classifying neutral reviews. It's possible this is because choosing 3 stars as 'neutral' might be a bit arbitrary, and it's possible people giving three stars might have both positive and negative things to say about the app, making them hard to classify. For future improvement, we will try other models besides Logistic Regression as well as pretrained sentiment analyzers.
-
-
-## Topic Ranking Model (Extracting important features for users of Spotify from reviews)
-The topic ranking model is an unsupervised learning model, and thus we do not have a training error currently. We evaluated the accuracy by manually creating labels for topics identified by LDA, and then using the allMini model from Hugging Face to classify reviews into one of the predefined topics. We then used the Kendall's Tau metric to get an idea of the correlation between the LDA model's ranking and allMini's ranking. This number was very low (0.02), but since it is above 0 it signifies that it is better than random. This was a very rough method for determining accuracy, but given this project it is the best we have for this milestone. Going forward, we plan to manually label reviews from all sentiments and ratings to get a comprehensive validation set that we can use to test our model, and we believe this will give us an idea of how to move forward. To improve our ranking, we will also try other methods. After labeling some data, we can transform this into a supervised machine learning problem, and we believe that fine-tuning an SVM and decision tree may help us get better results.
-
-
-
-# Milestone-2-Data-Exploration-Initial-Preprocessing
-Here is a repository containing containing all steps of our data exploration and initial preprocessing
-
-## Data Preprocessing Overview 
-To prepare our dataset for analysis, we will focus on encoding, categorizing, and scaling the review data effectively. Here is our approach:
-
-## Pre-processing data
-To pre-process our data, we will start by encoding the "review" column using several natural language processing tools. The tools that we are considering for encoding our textual
-review data are the following:
-+ **Bag of Words** creates a vocabulary of unique words across all reviews and represents each review as a vector of word counts based on this vocabulary.
-This approach is straightforward, capturing the presence and frequency of words but not their contextual meaning.
-+  **TF-IDF (Term Frequency-Inverse Document Frequency)** aka Word Frequency gives each word a weight based on its importance within the entire dataset.
-Words that appear frequently in a specific review get higher weights, while words common across many reviews receive lower weights, helping to highlight distinctive terms.
-+ **Word2Vec** converts reviews into vector representations in a way that captures semantic relationships between similar words and phrases (reviews closer to one another will also
-  be closer together in the vector space). This technique allows the model to understand relationships and context.
-
-Before doing any of this, however, we will be removing stop words from our review. Stop words are words that don't carry any semantic meaning, such as (a, an, and, I), etc. This 
-will be done in order to clean up our review data. We will, however, keep certain stop words (such as not, no, very, and but) because they can be used in our case to intensify
-("very good" as opposed to "good"), indiciate mixed feelings ("I liked this feature but not this one"), or invert sentiment ("no good" inverts "good"). We will also be dropping
-the Reply column because over 99.6% of the data in that feature is null, as well as dropping the column "Time submitted" because the time a user submits a review is irrelevant to our model.
-
-## General Strategy for Picking which Preprocessing Strategy.
-Our plan is to encode our reviews using all three techniques, and later down the line, we are going to test our model to see which 
-technique performs the best. We are going to split our data, use the same split to train three models, calculate accuracy and F1 scores, as well as using k-fold cross validation to see 
-which encoding technique works best(this of course probably falls into Milestone 4 territory, but the goal here is to explain how we are going to pick which preprocessing technique
-works best for us). 
-
-## Additional Encoding
-We will then encode the rating (the number of stars a user gives the app) into three categories: negative, neutral, and positive. Negative is 1-2 stars. Neutral is 3 stars, and Positive is 
-4-5 stars.
-
-For our dataset, we added an additional feature, which is the word count of each review. This feature, along with the 'Total_thumbsup' is something that we are planning on scaling:
- + To scale the word count columns, we will use a combination of robust and standard scaling, as there are outliers but the distribution for all three categories (negative, neutral, and postive) is relatively normal.
- + To scale the thumbs up column, we will use a log transformation as the distribution is heavily weighted towards zero but there are some reviews with a much higher count.
-
-
+### Preprocessing 
 
