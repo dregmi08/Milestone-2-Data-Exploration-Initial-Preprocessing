@@ -56,6 +56,36 @@ negative reviews according to the predefined labels derived from the LDA topics.
 then compared to the predicted rankings using Kendall’s Tau, a metric that measures the correlation between two rankings. This comparison helped assess how well the model’s predicted rankings aligned with the 
 actual distribution of user complaints across the topics.
 
+### Sentiment Classification: Model 2
+
+
+## Discussion
+
+### Sentiment Model
+For our supervised model (the sentiment classification), we used a Naive Bayes Classifier to classify reviews into three sentiment categories: Positive, Negative, and Neutral. This approach differs from 
+Milestone 3, where we used a Logistic Regression model to classify reviews as either Positive or Negative. By introducing the Neutral category, we noticed that our overall accuracy for both training and testing 
+remained similar to the previous milestone (Milestone 3: 0.81 accuracy, Milestone 4: 0.77 for testing, 0.80 for training). The slightly lower performance in the Naive Bayes model can be attributed to the 
+difficulty the classifier had in accurately classifying reviews with a 3-star rating, which was designated as Neutral. The classification report revealed very low precision, recall, and F1 scores for this 
+category (precision ~ test: 0.22, train: 0.67, recall ~ train: 0.05, test: 0.15, F1 ~ test: 0.08, train: 0.2). Upon further analysis, we found that some 3-star reviews contained subtle negative sentiments, which 
+may have caused the classifier to misclassify them as Neutral.When we adjusted the mapping by grouping 3-star reviews as Negative (instead of Neutral) and keeping 4- and 5-star reviews as Positive, the accuracy 
+of the model increased to approximately 0.85. This improvement suggested that this new approach of classifying 3-star reviews as Negative was more accurate. Despite this improvement, we still plan to explore 
+more 3-star samples to confirm whether this adjustment is the most appropriate solution. Overall, we are pleased with the Naive Bayes classifier, especially given the improvements made by adjusting the 3-star 
+review classification. Even with the addition of the Neutral category, the model remains comparable in performance to the earlier Logistic Regression-based model, and with further refinements, it has the 
+potential to be our most accurate model yet.
+
+### Feature Ranking Model
+For our unsupervised model, we significantly improved our ranking system compared to the previous milestone. In Milestone 3, our Kendall's Tau score, which is used to compare two rankings, was around 0.02. 
+However, we were able to increase this to 0.2 in Milestone 4, even before performing hyperparameter tuning. While there is still room for improvement, we believe that several factors contributed to this 
+improvement. One key improvement was our manual labeling process. In the previous milestone, we used LDA (Latent Dirichlet Allocation) to extract the top 10 positive and negative topics and then manually labeled 
+the top 10 most frequent negative topics. We also used a separate tool to assign labels and create a ground truth ranking. However, in Milestone 4, we decided to manually label a small subset of the dataset 
+(around 600 reviews). This allowed us to assign more accurate and descriptive labels to a broader set of issues. We then grouped similar labels and reviews together and ranked them by frequency, with the most 
+common complaints being ranked as the most important. Additionally, we used fuzzy k-means clustering to account for multi-cluster membership, recognizing that reviews can often belong to multiple categories or 
+labels. This was a crucial step because reviews typically touch on more than one issue, making it more appropriate to allow reviews to belong to multiple clusters. By clustering reviews with similar labels and 
+complaints, we were able to better capture the complexity of user feedback. After clustering the reviews and comparing the new Kendall's Tau score to the previous one, we saw a clear improvement. The combination 
+of manual labeling and multi-cluster membership clustering contributed to a more accurate ranking system. Furthermore, after performing hyperparameter tuning, we increased the number of clusters, which led to a 
+Kendall's Tau score of 0.466, a significant improvement over the previous results and a new personal best. This marked a substantial advancement from what we had achieved in Milestone 3, and we are optimistic 
+about further improving the model with continued adjustments.
+
 
 
 
