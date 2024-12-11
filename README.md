@@ -117,10 +117,15 @@ on the model by experimenting with a different numbers of clusters to optimize t
 | macro avg     | 0.76       | 0.64   | 0.64     | 49275   |
 | weighted avg  | 0.79       | 0.80   | 0.78     | 49275   |
 
-### Results of the 
+### Results of the Feature Ranking Model, Models 1 and 2 (Unsupervised, so no fitting graph or Precision/Accuracy/Recall Metrics)
+
+| Model Name                              | Kendall’s Tau Score |
+|-----------------------------------------|---------------------|
+| LDA                                     | 0.02                |
+| Fuzzy K-means                           | 0.2                 |
+| Fuzzy K-means (post hyperparameter tuning) | 0.466               |
 
 ## Discussion
-
 
 ### Sentiment Model
 For our supervised model (the sentiment classification), we used a Naive Bayes Classifier to classify reviews into three sentiment categories: Positive, Negative, and Neutral. This approach differs from 
