@@ -35,3 +35,30 @@ These preprocessing steps were applied consistently across both models. However,
 preprocessing was limited to this subset of the data. By applying the same cleaning methodology to both models, we ensured clarity, consistency, and reproducibility, even though they were 
 implemented in separate notebooks. Preprocessing decisions were guided by the need to reduce noise, standardize input data, and prepare text for downstream tasks such as feature extraction 
 and sentiment analysis.
+
+### Sentiment Classification: Model 1
+The sentiment classifier was designed to categorize reviews as either positive or negative based on their numeric rating. Reviews with ratings below 3 were labeled as negative, while those with ratings of 3 or 
+higher were labeled positive. We trained a  Word2Vec model on the tokenized reviews to learn vector representations for each word, capturing the semantic relationships between words in a 100-dimensional space. 
+To represent entire reviews numerically, the average Word2Vec vector of all words in a review was calculated. Reviews with no valid words were represented as zero vectors. These averaged vectors were then used 
+as the features for the model. A Logistic Regression classifier was used to classify the sentiment of the reviews. After splitting the data into training and test sets (80% and 20%, respectively), the Logistic 
+Regression model was fitted to predict whether a review is likely to correspond to a positive or negative rating.
+
+### Feature Ranking: Model 1
+For the feature ranking model, Latent Dirichlet Allocation (LDA) was used for topic modeling to identify distinct topics within the dataset of reviews. LDA is an unsupervised learning technique that assumes each 
+document (in this case, a review) is a mixture of topics, and each topic is represented by a distribution of words. The topics were extracted by finding clusters of words that frequently appeared together, 
+representing common themes in the reviews. Once the topics were identified, sentiment scores were calculated for each topic based on the sentiment of the reviews associated with them. Sentiment scores were 
+assigned by mapping the predicted sentiment labels (positive or negative) to numerical values: 1 for positive and -1 for negative. The model then aggregated these sentiment scores across all reviews linked to 
+each topic, resulting in a cumulative sentiment score for each topic. These scores were used to rank the topics from the most negative to the most positive. Only the negative topics were considered for ranking, 
+as the goal was to focus on the issues that users were most dissatisfied with. After generating the topic rankings, the words associated with each topic (provided by LDA) were manually examined to assign labels 
+that more clearly described the underlying issues. For example, a topic with words like ["ads", "30 sec", "annoying"] would be labeled as "too many ads." This manual labeling resulted in a final ranked list of 
+issues, replacing the original topic vectors with understandable, descriptive labels. To validate the predicted rankings and create a ground truth, Sentence Transformers were used to classify a subset of 
+negative reviews according to the predefined labels derived from the LDA topics. The frequency of each label was counted, and the issues were ranked according to their frequency. This ground truth ranking was 
+then compared to the predicted rankings using Kendall’s Tau, a metric that measures the correlation between two rankings. This comparison helped assess how well the model’s predicted rankings aligned with the 
+actual distribution of user complaints across the topics.
+
+
+
+
+
+
+
