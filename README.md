@@ -150,7 +150,10 @@ categories or labels. This was a crucial step because reviews typically touch on
 similar labels and complaints, we were able to better capture the complexity of user feedback. After clustering the reviews and comparing the new Kendall's Tau score to the previous one, we saw a clear 
 improvement. The combination of manual labeling and multi-cluster membership clustering contributed to a more accurate ranking system. Furthermore, after performing hyperparameter tuning, we increased the 
 number of clusters, which led to a Kendall's Tau score of 0.466, a significant improvement over the previous results and a new personal best. This marked a substantial advancement from what we had achieved in 
-Milestone 3, and we are optimistic about further improving the model with continued adjustments.
+Milestone 3, and we are optimistic about further improving the model with continued adjustments. 
+
+## Conclusion
+
 
 ## Statement of Collaboration
 
@@ -159,9 +162,3 @@ Milestone 3, and we are optimistic about further improving the model with contin
 + **Luke Valdez**: Participated in the discussion for the preprocessing, model 1 and model 2 assignments. Worked on the READMEs for hyperparameter tuning and model fitting. Labeled 100 data points for the ground truth of models 1/2. Did hyperparameter tuning for the first model of the project. Reviewed and edited the final report and implemented and labeled figures.
 + **Ezgi Bayraktaroglu**: Participated in discussions for the milestones. Helped with the original dataset proposal. Worked on the README file for the classification model for Milestone 3. Labelled 100 negative reviews with topics for the ground truth of the unsupervised model and grouped the 600 labelled reviews into more general groups/topics with Nicolas Coleback.
 + **Rushil Chandrupatla**: Refined abstract, fully created classification model 1 for sentiment using word2vec and verified validity using rating, fully created feature model 1 for topic analysis and retrieval using LDA, labeled 100 data points to create evaluation dataset, made edits on final report.
-
-
-
-
-
-
