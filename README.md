@@ -89,11 +89,11 @@ about further improving the model with continued adjustments.
 
 ## Statement of Collaboration
 
-+ Drishti Regmi: Wrote abstract, came up with feature ranking idea, created second models for both milestones, did the bulk of the data exploration, did the Multinomial Naive Bayes Model for Milestone 4, contributed to a lot of the READMEs, and labeled 100 data points as well as hyperparameter tuning for the second model in Milestone 4
-+ Nicolas Colebank: Created first classification model, contributed to data preprocessing/exploration README, labeled 100 data points, and helped group labels into topics. Wrote intro, methods, and results sections for the final report.
-+ Luke Valdez: Participated in the discussion for the preprocessing, model 1 and model 2 assignments. Worked on the READMEs for hyperparameter tuning and model fitting. Labeled 100 data points for the ground truth of models 1/2. Did hyperparameter tuning for the first model of the project. Reviewed and edited the final report and implemented and labeled figures.
-+ Ezgi Bayraktaroglu: Participated in discussions for the milestones. Helped with the original dataset proposal. Worked on the README file for the classification model for Milestone 3. Labelled 100 negative reviews with topics for the ground truth of the unsupervised model and grouped the 600 labelled reviews into more general groups/topics with Nicolas Coleback.
-+ Rushil Chandrupatla: Refined abstract, fully created classification model 1 for sentiment using word2vec and verified validity using rating, fully created feature model 1 for topic analysis and retrieval using LDA, labeled 100 data points to create evaluation dataset, made edits on final report.
++ **Drishti Regmi**: Wrote abstract, came up with feature ranking idea, created second models for both milestones, did the bulk of the data exploration, did the Multinomial Naive Bayes Model for Milestone 4, contributed to a lot of the READMEs, and labeled 100 data points as well as hyperparameter tuning for the second model in Milestone 4
++ **Nicolas Colebank**: Created first classification model, contributed to data preprocessing/exploration README, labeled 100 data points, and helped group labels into topics. Wrote intro, methods, and results sections for the final report.
++ **Luke Valdez**: Participated in the discussion for the preprocessing, model 1 and model 2 assignments. Worked on the READMEs for hyperparameter tuning and model fitting. Labeled 100 data points for the ground truth of models 1/2. Did hyperparameter tuning for the first model of the project. Reviewed and edited the final report and implemented and labeled figures.
++ **Ezgi Bayraktaroglu**: Participated in discussions for the milestones. Helped with the original dataset proposal. Worked on the README file for the classification model for Milestone 3. Labelled 100 negative reviews with topics for the ground truth of the unsupervised model and grouped the 600 labelled reviews into more general groups/topics with Nicolas Coleback.
++ **Rushil Chandrupatla**: Refined abstract, fully created classification model 1 for sentiment using word2vec and verified validity using rating, fully created feature model 1 for topic analysis and retrieval using LDA, labeled 100 data points to create evaluation dataset, made edits on final report.
 
 
 
