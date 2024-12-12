@@ -18,6 +18,9 @@ level of engagement (thumbs up) on negative reviews compared to positive ones, a
 analysis by extracting the top 20 words for each rating category (1-5 stars) to identify key themes and patterns across user feedback. These findings provided initial insights into user 
 behavior and engagement, which guided our next steps in preprocessing and modeling. All of the steps we took for data exploration, along with all plots and graphs can be seen in the [Milestone 2 Notebook](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone2.ipynb).
 
+![image](figures/frequency_of_ratings.png)
+![image](figures/top_20_words.png)
+
 ### Preprocessing 
 For our preprocessing, we began by dropping the Reply and Time_submitted columns. The Reply column was excluded because over 99.6% of its values were null, indicating that the majority of reviews did not receive a response. Retaining this column would introduce unnecessary sparsity and could negatively impact model performance. Similarly, we deemed the Time_submitted column 
 irrelevant to the objectives of either model, as the timing of a review’s submission does not contribute meaningful insights into its content or sentiment. Next, we focused on the Review 
@@ -64,6 +67,8 @@ also introduced a neutral category by adjusting the mapping of ratings, where 3-
 negative. To further optimize the performance of the classifier, we performed hyperparameter tuning, focusing primarily on the smoothing parameter (alpha). This tuning step helped refine the model's 
 classification of reviews by adjusting the level of smoothing applied to frequency estimates, ultimately improving the classifier’s accuracy in distinguishing between positive, negative, and neutral reviews. 
 This model can be seen in the [Milestone 4 Sentiment Classification Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4Classification.ipynb).
+
+![image](figures/f1score_vs_alpha.png)
 
 ### Feature Ranking: Model 2
 For our second feature ranking model, we shifted our approach by implementing clustering. We selected K-means fuzzy clustering, as it allows reviews to be members of multiple clusters, which is crucial since 
@@ -122,6 +127,8 @@ Notebooks: [Milestone 3 Sentiment Classification Model](https://github.com/dregm
 | macro avg     | 0.76       | 0.64   | 0.64     | 49275   |
 | weighted avg  | 0.79       | 0.80   | 0.78     | 49275   |
 
+![image](figures/learning_curve_naive_bayes.png)
+
 ### Results of the Feature Ranking Model, Models 1 and 2 (Unsupervised, so no fitting graph or Precision/Accuracy/Recall Metrics)
 
 | Model Name                              | Kendall’s Tau Score |
@@ -131,6 +138,8 @@ Notebooks: [Milestone 3 Sentiment Classification Model](https://github.com/dregm
 | Fuzzy K-means (post hyperparameter tuning) | 0.466               |
 
 Notebooks: [Milestone 3 Feature Ranking Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/LDA_feature_extraction.ipynb), [Milestone 4 Feature Ranking Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4.ipynb)
+
+![image](figures/fuzzy_cmeans_clustering.png)
 
 ## Discussion
 
