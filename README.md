@@ -168,6 +168,8 @@ improvement. The combination of manual labeling and multi-cluster membership clu
 number of clusters, which led to a Kendall's Tau score of 0.466, a significant improvement over the previous results and a new personal best. This marked a substantial advancement from what we had achieved in 
 Milestone 3, and we are optimistic about further improving the model with continued adjustments. Notebooks: [Milestone 3 Feature Ranking Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/LDA_feature_extraction.ipynb), [Milestone 4 Feature Ranking Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4.ipynb)
 
+Here is the link to the manual labeling that we did: https://docs.google.com/spreadsheets/d/1NjtRROguEGjIdUgZpExqzwd3C-aOSvNFI2xtxZ47UqY/edit?usp=sharing
+
 ## Conclusion
 Our project successfully met our goal of understanding user feedback through sentiment analysis and featuring importance rankings. Our model is designed to offer valuable insights for businesses and app developers looking to enhance their products based on customer reviews, with a particular focus on addressing negative feedback and identifying what aspects require changes. 
 
