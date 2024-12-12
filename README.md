@@ -16,7 +16,7 @@ the word count of reviews by rating to uncover patterns that might inform prepro
 lower ratings (1-2 stars). Since one of our models focuses on feature ranking for negative reviews, we paid particular attention to the balance of negative versus positive reviews, the 
 level of engagement (thumbs up) on negative reviews compared to positive ones, and any trends linking word count with sentiment ratings. Additionally, we performed a preliminary keyword 
 analysis by extracting the top 20 words for each rating category (1-5 stars) to identify key themes and patterns across user feedback. These findings provided initial insights into user 
-behavior and engagement, which guided our next steps in preprocessing and modeling.
+behavior and engagement, which guided our next steps in preprocessing and modeling. All of the steps we took for data exploration, along with all plots and graphs can be seen in the [Milestone 2 Notebook](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone2.ipynb)
 
 ### Preprocessing 
 For our preprocessing, we began by dropping the Reply and Time_submitted columns. The Reply column was excluded because over 99.6% of its values were null, indicating that the majority of reviews did not receive a response. Retaining this column would introduce unnecessary sparsity and could negatively impact model performance. Similarly, we deemed the Time_submitted column 
