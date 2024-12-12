@@ -16,7 +16,7 @@ the word count of reviews by rating to uncover patterns that might inform prepro
 lower ratings (1-2 stars). Since one of our models focuses on feature ranking for negative reviews, we paid particular attention to the balance of negative versus positive reviews, the 
 level of engagement (thumbs up) on negative reviews compared to positive ones, and any trends linking word count with sentiment ratings. Additionally, we performed a preliminary keyword 
 analysis by extracting the top 20 words for each rating category (1-5 stars) to identify key themes and patterns across user feedback. These findings provided initial insights into user 
-behavior and engagement, which guided our next steps in preprocessing and modeling. All of the steps we took for data exploration, along with all plots and graphs can be seen in the [Milestone 2 Notebook](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone2.ipynb)
+behavior and engagement, which guided our next steps in preprocessing and modeling. All of the steps we took for data exploration, along with all plots and graphs can be seen in the [Milestone 2 Notebook](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone2.ipynb).
 
 ### Preprocessing 
 For our preprocessing, we began by dropping the Reply and Time_submitted columns. The Reply column was excluded because over 99.6% of its values were null, indicating that the majority of reviews did not receive a response. Retaining this column would introduce unnecessary sparsity and could negatively impact model performance. Similarly, we deemed the Time_submitted column 
@@ -35,6 +35,12 @@ These preprocessing steps were applied consistently across both models. However,
 preprocessing was limited to this subset of the data. By applying the same cleaning methodology to both models, we ensured clarity, consistency, and reproducibility, even though they were 
 implemented in separate notebooks. Preprocessing decisions were guided by the need to reduce noise, standardize input data, and prepare text for downstream tasks such as feature extraction 
 and sentiment analysis.
+
+The preprocessing that we did was the same for both models for both Milestones 3 and 4 and can be seen in the beginning of these notebooks: [Milestone 3 Sentiment Classification]
+(https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone3.ipynb), [Milestone 3 Feature Ranking]
+(https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/LDA_feature_extraction.ipynb), [Milestone 4 Sentiment Classification]
+(https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4Classification.ipynb), [Milestone 4 Feature Ranking]
+(https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4.ipynb)
 
 ### Sentiment Classification: Model 1
 The sentiment classifier was designed to categorize reviews as either positive or negative based on their numeric rating. Reviews with ratings below 3 were labeled as negative, while those with ratings of 3 or 
