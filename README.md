@@ -153,6 +153,16 @@ number of clusters, which led to a Kendall's Tau score of 0.466, a significant i
 Milestone 3, and we are optimistic about further improving the model with continued adjustments. 
 
 ## Conclusion
+Our project successfully met our goal of understanding user feedback through sentiment analysis and featuring importance rankings. Our model is designed to offer valuable insights for businesses and app developers looking to enhance their products based on customer reviews, with a particular focus on addressing negative feedback and identifying what aspects require changes. 
+
+We are satisfied with our progress throughout this project; however, we recognize there is still considerable room for improvement. One way would be to experiment with additional models, which could potentially 
+enhance Kendall’s Tau score for feature ranking, thereby refining our understanding of which features impact user satisfaction the most. Moreover, enhancements to our sentiment classifier’s performance, 
+specifically for accuracy, precision, and recall, are crucial, especially for classifications of our 3-star reviews, which have a less definite user sentiment. Additionally, having a more extensive set of 
+manually set ground truths would be beneficial in having a higher confidence level in our evaluation. 
+
+If we were to use this solution for practical purposes, other functionalities would be beneficial. First, we would transform it into a continuous learning system that would dynamically incorporate new reviews 
+as they are submitted. Additionally, considering the review timestamp and whether an issue has already been resolved since the review was submitted could lead to a more accurate and up-to-date list of crucial 
+issues needing attention. Overall, these enhancements would make our data more responsive to real-time data and effectively guide product development.
 
 
 ## Statement of Collaboration
