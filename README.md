@@ -36,11 +36,7 @@ preprocessing was limited to this subset of the data. By applying the same clean
 implemented in separate notebooks. Preprocessing decisions were guided by the need to reduce noise, standardize input data, and prepare text for downstream tasks such as feature extraction 
 and sentiment analysis.
 
-The preprocessing that we did was the same for both models for both Milestones 3 and 4 and can be seen in the beginning of these notebooks: [Milestone 3 Sentiment Classification]
-(https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone3.ipynb), [Milestone 3 Feature Ranking]
-(https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/LDA_feature_extraction.ipynb), [Milestone 4 Sentiment Classification]
-(https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4Classification.ipynb), [Milestone 4 Feature Ranking]
-(https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4.ipynb)
+The preprocessing that we did was the same for both models for both Milestones 3 and 4 and can be seen in the beginning of these notebooks: [Milestone 3 Sentiment Classification](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone3.ipynb), [Milestone 3 Feature Ranking](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/LDA_feature_extraction.ipynb), [Milestone 4 Sentiment Classification](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4Classification.ipynb), [Milestone 4 Feature Ranking](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4.ipynb)
 
 ### Sentiment Classification: Model 1
 The sentiment classifier was designed to categorize reviews as either positive or negative based on their numeric rating. Reviews with ratings below 3 were labeled as negative, while those with ratings of 3 or 
