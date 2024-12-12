@@ -36,14 +36,14 @@ preprocessing was limited to this subset of the data. By applying the same clean
 implemented in separate notebooks. Preprocessing decisions were guided by the need to reduce noise, standardize input data, and prepare text for downstream tasks such as feature extraction 
 and sentiment analysis.
 
-The preprocessing that we did was the same for both models for both Milestones 3 and 4 and can be seen in the beginning of these notebooks: [Milestone 3 Sentiment Classification](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone3.ipynb), [Milestone 3 Feature Ranking](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/LDA_feature_extraction.ipynb), [Milestone 4 Sentiment Classification](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4Classification.ipynb), [Milestone 4 Feature Ranking](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4.ipynb)
+The preprocessing that we did was the same for both models for both Milestones 3 and 4 and can be seen in the beginning of these notebooks: [Milestone 3 Sentiment Classification Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone3.ipynb), [Milestone 3 Feature Ranking Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/LDA_feature_extraction.ipynb), [Milestone 4 Sentiment Classification Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4Classification.ipynb), [Milestone 4 Feature Ranking Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4.ipynb).
 
 ### Sentiment Classification: Model 1
 The sentiment classifier was designed to categorize reviews as either positive or negative based on their numeric rating. Reviews with ratings below 3 were labeled as negative, while those with ratings of 3 or 
 higher were labeled positive. We trained a  Word2Vec model on the tokenized reviews to learn vector representations for each word, capturing the semantic relationships between words in a 100-dimensional space. 
 To represent entire reviews numerically, the average Word2Vec vector of all words in a review was calculated. Reviews with no valid words were represented as zero vectors. These averaged vectors were then used 
 as the features for the model. A Logistic Regression classifier was used to classify the sentiment of the reviews. After splitting the data into training and test sets (80% and 20%, respectively), the Logistic 
-Regression model was fitted to predict whether a review is likely to correspond to a positive or negative rating.
+Regression model was fitted to predict whether a review is likely to correspond to a positive or negative rating, this model can be seen in the [Milestone 3 Sentiment Classification Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone3.ipynb).
 
 ### Feature Ranking: Model 1
 For the feature ranking model, Latent Dirichlet Allocation (LDA) was used for topic modeling to identify distinct topics within the dataset of reviews. LDA is an unsupervised learning technique that assumes 
@@ -56,20 +56,21 @@ that more clearly described the underlying issues. For example, a topic with wor
 issues, replacing the original topic vectors with understandable, descriptive labels. To validate the predicted rankings and create a ground truth, Sentence Transformers were used to classify a subset of 
 negative reviews according to the predefined labels derived from the LDA topics. The frequency of each label was counted, and the issues were ranked according to their frequency. This ground truth ranking was 
 then compared to the predicted rankings using Kendall’s Tau, a metric that measures the correlation between two rankings. This comparison helped assess how well the model’s predicted rankings aligned with the 
-actual distribution of user complaints across the topics.
+actual distribution of user complaints across the topics. This model can be seen in the [Milestone 3 Feature Ranking Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/LDA_feature_extraction.ipynb).
 
 ### Sentiment Classification: Model 2
 Our second sentiment classification model used the same embedding technique as the first model, but with a few key adjustments. Instead of using Logistic Regression, we employed a Naive Bayes Classifier. We 
 also introduced a neutral category by adjusting the mapping of ratings, where 3-star ratings were now considered neutral, while ratings of 4 and 5 stars were classified as positive and 1 and 2 stars as 
 negative. To further optimize the performance of the classifier, we performed hyperparameter tuning, focusing primarily on the smoothing parameter (alpha). This tuning step helped refine the model's 
-classification of reviews by adjusting the level of smoothing applied to frequency estimates, ultimately improving the classifier’s accuracy in distinguishing between positive, negative, and neutral reviews.
+classification of reviews by adjusting the level of smoothing applied to frequency estimates, ultimately improving the classifier’s accuracy in distinguishing between positive, negative, and neutral reviews. 
+This model can be seen in the [Milestone 4 Sentiment Classification Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4Classification.ipynb).
 
 ### Feature Ranking: Model 2
 For our second feature ranking model, we shifted our approach by implementing clustering. We selected K-means fuzzy clustering, as it allows reviews to be members of multiple clusters, which is crucial since 
 many reviews address multiple topics. This technique enables more flexibility in capturing the diverse nature of user complaints. Next, we manually labeled a small subset of our dataset (600 reviews) and 
 grouped them into topics. Afterward, we ranked these topics by their frequency, with the topic having the most frequent complaints being ranked the highest. This labeled subset served as our ground truth for 
 the ranking. To evaluate the accuracy of the ranking generated by K-means fuzzy clustering, we compared it to our manually created ranking using Kendall’s Tau. Additionally, we performed hyperparameter tuning 
-on the model by experimenting with a different numbers of clusters to optimize the clustering results and improve the model’s performance.
+on the model by experimenting with a different numbers of clusters to optimize the clustering results and improve the model’s performance, which can be seen here [Milestone 4 Feature Ranking Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4.ipynb).
 
 ## Results
 
@@ -108,6 +109,8 @@ on the model by experimenting with a different numbers of clusters to optimize t
 | macro avg     | 0.60       | 0.59   | 0.57     | 12319   |
 | weighted avg  | 0.73       | 0.77   | 0.74     | 12319   |
 
+Notebooks: [Milestone 3 Sentiment Classification Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone3.ipynb), [Milestone 4 Sentiment Classification Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4Classification.ipynb)
+
 #### Results on training set 
 
 |               | precision | recall | f1-score | support |
@@ -127,6 +130,8 @@ on the model by experimenting with a different numbers of clusters to optimize t
 | Fuzzy K-means                           | 0.2                 |
 | Fuzzy K-means (post hyperparameter tuning) | 0.466               |
 
+Notebooks: [Milestone 3 Feature Ranking Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/LDA_feature_extraction.ipynb), [Milestone 4 Feature Ranking Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4.ipynb)
+
 ## Discussion
 
 ### Sentiment Model
@@ -139,7 +144,7 @@ which may have caused the classifier to misclassify them as Neutral.When we adju
 accuracy of the model increased to approximately 0.85. This improvement suggested that this new approach of classifying 3-star reviews as Negative was more accurate. Despite this improvement, we still plan to 
 explore more 3-star samples to confirm whether this adjustment is the most appropriate solution. Overall, we are pleased with the Naive Bayes classifier, especially given the improvements made by adjusting the 
 3-star review classification. Even with the addition of the Neutral category, the model remains comparable in performance to the earlier Logistic Regression-based model, and with further refinements, it has the 
-potential to be our most accurate model yet.
+potential to be our most accurate model yet. Noteboks: [Milestone 3 Sentiment Classification Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone3.ipynb), [Milestone 4 Sentiment Classification Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4Classification.ipynb).
 
 ### Feature Ranking Model
 For our unsupervised model, we significantly improved our ranking system compared to the previous milestone. In Milestone 3, our Kendall's Tau score, which is used to compare two rankings, was around 0.02. 
@@ -152,7 +157,7 @@ categories or labels. This was a crucial step because reviews typically touch on
 similar labels and complaints, we were able to better capture the complexity of user feedback. After clustering the reviews and comparing the new Kendall's Tau score to the previous one, we saw a clear 
 improvement. The combination of manual labeling and multi-cluster membership clustering contributed to a more accurate ranking system. Furthermore, after performing hyperparameter tuning, we increased the 
 number of clusters, which led to a Kendall's Tau score of 0.466, a significant improvement over the previous results and a new personal best. This marked a substantial advancement from what we had achieved in 
-Milestone 3, and we are optimistic about further improving the model with continued adjustments. 
+Milestone 3, and we are optimistic about further improving the model with continued adjustments. Notebooks: [Milestone 3 Feature Ranking Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/LDA_feature_extraction.ipynb), [Milestone 4 Feature Ranking Model](https://github.com/dregmi08/SpotifyFeatureRanking/blob/Milestone5/Milestone4.ipynb)
 
 ## Conclusion
 Our project successfully met our goal of understanding user feedback through sentiment analysis and featuring importance rankings. Our model is designed to offer valuable insights for businesses and app developers looking to enhance their products based on customer reviews, with a particular focus on addressing negative feedback and identifying what aspects require changes. 
